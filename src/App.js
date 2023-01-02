@@ -126,7 +126,10 @@ function App() {
                 {/* Class TodoText // Inside TodoList */}
                 <span className="">{t.todo}</span>
                 <button onClick={() => handleEdit(t.id)}>EDIT</button>
-                <button onClick={() => deleteTodo(t.id)}>
+                <button onClick={() =>{if(window.confirm("Delete")){
+                  deleteTodo(t.id);
+                }
+                }}>
                   DEL
                 </button>
               </li>
