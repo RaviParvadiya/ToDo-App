@@ -38,7 +38,7 @@ function App() {
       // id: id
     });
     setTodos([res.data, ...todos]);
-    setEditId(0);
+    // setEditId(0);
     setTodo("");
   };
 
@@ -78,17 +78,17 @@ function App() {
     }
 
     if (todo !== "") {
-      setTodos([{ id: `${todo}-${Date.now()}`, todo }, ...todos]);
+      // setTodos([{ id: `${todo}-${Date.now()}`, todo }, ...todos]);
       addTodo(todo);
       setTodo("");
     }
     // addTodo(todo, todo.id);
   };
 
-  const handleDelete = (id) => {
-    const delTodo = todos.filter((to) => to.id !== id);
-    setTodos([...delTodo]);
-  };
+  // const handleDelete = (id) => {
+  //   const delTodo = todos.filter((to) => to.id !== id);
+  //   setTodos([...delTodo]);
+  // };
 
   const handleEdit = (id) => {
     const editTodo = todos.find((i) => i.id === id);
@@ -119,17 +119,18 @@ function App() {
 
           {/* Class AllTodos List */}
           <ul className="">
+            
+            {/* Class SingleTodo */}
             {todos.map((t) => (
               <li className="" key={t.id}>
                 {/* Class TodoText // Inside TodoList */}
                 <span className="">{t.todo}</span>
                 <button onClick={() => handleEdit(t.id)}>EDIT</button>
-                <button onClick={() => handleDelete(deleteTodo(t.id))}>
+                <button onClick={() => deleteTodo(t.id)}>
                   DEL
                 </button>
               </li>
             ))}
-            {/* Class SingleTodo */}
           </ul>
         </div>
       </header>
