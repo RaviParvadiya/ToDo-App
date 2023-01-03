@@ -100,36 +100,44 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
+      <header className="">
         {/* Class Container */}
-        <div className="Container">
+        <div className="container">
           <h1>TODO</h1>
-          {/* Class TodoForm */}
-          <form className="" onSubmit={handleSubmit}>
+          {/* Class todoForm */}
+          <form className="todoForm" onSubmit={handleSubmit}>
             {/* <label htmlFor="todo">Add Your List Here!</label> */}
             <input
               type="text"
+              className="todoInput"
               value={todo}
               onChange={(e) => setTodo(e.target.value)}
               pattern=".+"
               required
             />
-            <button type="submit">{editId ? "UPDATE" : "ADD"}</button>
+            <button type="submit" className="btn-submit">
+              {editId ? "UPDATE" : "ADD"}
+            </button>
           </form>
 
-          {/* Class AllTodos List */}
-          <ul className="">
-            
-            {/* Class SingleTodo */}
+          {/* Class allTodos List */}
+          <ul className="allTodos">
+            {/* Class singleTodo */}
             {todos.map((t) => (
-              <li className="" key={t.id}>
-                {/* Class TodoText // Inside TodoList */}
-                <span className="">{t.todo}</span>
-                <button onClick={() => handleEdit(t.id)}>EDIT</button>
-                <button onClick={() =>{if(window.confirm("Delete")){
-                  deleteTodo(t.id);
-                }
-                }}>
+              <li className="singleTodo" key={t.id}>
+                {/* Class todoText // Inside TodoList */}
+                <span className="todoText">{t.todo}</span>
+                <button classname="btn-action" onClick={() => handleEdit(t.id)}>
+                  EDIT
+                </button>
+                <button
+                  className="btn-action"
+                  onClick={() => {
+                    if (window.confirm("Delete")) {
+                      deleteTodo(t.id);
+                    }
+                  }}
+                >
                   DEL
                 </button>
               </li>
