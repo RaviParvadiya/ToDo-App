@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import "./App.css";
 import axios from "axios";
 
-
 function App() {
   // Single Todo
   const [todo, setTodo] = useState("");
@@ -35,7 +34,7 @@ function App() {
   // POST with Axios
   const addTodo = async (todo) => {
     let res = await axios.post(apiEndPoint, {
-      todo: todo
+      todo: todo,
       // id: id
     });
     setTodos([res.data, ...todos]);
@@ -46,7 +45,7 @@ function App() {
   // PUT with axios
   const editTodoApi = async (editId) => {
     await axios.put(`${apiEndPoint}${editId}`, {
-      todo: todo
+      todo: todo,
     });
     // setTodos(
     //   todos.find((i) => {
@@ -116,9 +115,9 @@ function App() {
               pattern=".+"
               required
             />
-            <Button variant="text" type="submit" className="btn-submit">
+            <button variant="text" type="submit" className="btn-submit">
               {editId ? "UPDATE" : "ADD"}
-            </Button>
+            </button>
           </form>
 
           {/* Class allTodos List */}
