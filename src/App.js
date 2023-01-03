@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./App.css";
 import axios from "axios";
 
+
 function App() {
   // Single Todo
   const [todo, setTodo] = useState("");
@@ -115,9 +116,9 @@ function App() {
               pattern=".+"
               required
             />
-            <button type="submit" className="btn-submit">
+            <Button variant="text" type="submit" className="btn-submit">
               {editId ? "UPDATE" : "ADD"}
-            </button>
+            </Button>
           </form>
 
           {/* Class allTodos List */}
