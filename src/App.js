@@ -127,7 +127,7 @@ function App() {
               <li className="singleTodo" key={t.id}>
                 {/* Class todoText // Inside TodoList */}
                 <span className="todoText">{t.todo}</span>
-                <button classname="btn-action" onClick={() => handleEdit(t.id)}>
+                <button className="btn-action" onClick={() => handleEdit(t.id)}>
                   EDIT
                 </button>
                 <button
