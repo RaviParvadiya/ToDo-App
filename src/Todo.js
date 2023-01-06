@@ -20,6 +20,8 @@ function Todo() {
 
   const [loaded, setLoaded] = useState(false);
 
+  const [showBuffer, setShowBuffer] = useState(false);
+
   useEffect(() => {
     setTimeout(setLoaded, 800, true);
     // setLoaded(true);
@@ -118,13 +120,18 @@ function Todo() {
   }; */
 
   // Sign Out
-  const removeUser = async () => {
-    const rmd = todos.map((t) => t.id);
-    for (let i in rmd) {
-      await deleteTodo(rmd[i]);
-    }
-    window.localStorage.clear();
-    navigate("/");
+  const handleSignOut =  () => {
+    setShowBuffer(true);
+    setTimeout(async () => {
+      const rmd = todos.map((t) => t.id);
+      for (let i in rmd) {
+        await deleteTodo(rmd[i]);
+      }
+      window.localStorage.removeItem("key");
+      navigate("/");
+      setShowBuffer(false);
+    }, 2000);
+
   };
 
   return (
@@ -148,7 +155,7 @@ function Todo() {
               {editId ? "UPDATE" : "ADD"}
             </button>
           </form>
-          {!loaded && <Spinner>LOADING...</Spinner>}
+          {!loaded && <Spinner />}
 
           {/* Class allTodos List */}
           <ul className="allTodos">
@@ -173,17 +180,8 @@ function Todo() {
               </li>
             ))}
           </ul>
-          <button
-            onClick={() => {
-              if (!loaded) {
-                return <Spinner>LOADING...</Spinner>;
-              } 
-                removeUser();
-              
-            }}
-          >
-            Sign Out
-          </button>
+          <button onClick={() => handleSignOut()}>Sign Out</button>
+          {showBuffer && <Spinner />}
         </div>
       </header>
     </div>
