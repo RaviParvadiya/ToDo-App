@@ -80,3 +80,12 @@ button:hover {
 .todoText {
   flex: 1;
 }
+
+.SignIn {
+  min-height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #1d1d1d;
+}

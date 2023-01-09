@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
+import './Todo.css'
 
 function SignIn() {
   const navigate = useNavigate();
@@ -12,9 +13,12 @@ function SignIn() {
   };
 
   return (
-    <div>
-      <h1 className="text-3xl text-white font-bold">Todo-Application</h1>
-      <button onClick={handleSignIn}>Sign In</button>
+    <div className="SignIn">
+      <div className="container">
+        <h1>Todo-Application</h1>
+        <button onClick={handleSignIn}>Sign In</button>
+        
+      </div>
     </div>
   );
 }
